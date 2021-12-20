@@ -90,11 +90,11 @@ int getplayersnumber()
 {
 	do
 	{
-		printf ("Inserire un numero di giocatori PARI: ");	// INSERT AN EVEN PLAYERS NUMBER
+		printf ("Inserire un numero di giocatori: ");	// INSERT NUMBER OF PLAYERS
 		scanf("%d", &n_players);
 	}
 	
-	while (n_players %2 != 0);	// IF IS ODD REDO
+	while (n_players <= 1);
 	
 	return n_players;
 }
@@ -107,9 +107,13 @@ void getplayersnames (details *a)
 {	
 	for (int i = 0; i < n_players; i++)	// COLLECTING NAMES AND SAVING THEM IN A STRUCT
 	{
+		char temp [20];
 		a[i].id = i;
 		printf ("\nInserire il nome numero %d: ", i + 1);
-		scanf("%s", a[i].name);
+		scanf("%s", temp);
+		carattereMinuscolo(temp);
+		strcpy(a[i].name, temp); 
+		
 	}	
 }
 
@@ -199,6 +203,7 @@ void printresults()
 		printf("\tBenvenuto all'estrazione dei regali di Natale!\n\n\tPer favore inserisci il tuo nome: ");
 		scanf("%s", user_name);
 		carattereMinuscolo(user_name);	// TRANSFORM CHARACTERS IN LOWERCASES
+		
 		
 		for (int i = 0; i < n_players; i++)
 		{	
